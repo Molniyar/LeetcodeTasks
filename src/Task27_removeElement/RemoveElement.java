@@ -21,23 +21,17 @@ public class RemoveElement {
 
         System.out.println(new RemoveElement().removeElement(arrayTest2, intTest2));
         System.out.println(new RemoveElement().removeElement(new int[]{3, 2, 2, 3, 3}, 3));
+        System.out.println(new RemoveElement().removeElement(new int[]{1, 0, 0, 3, 0, 4, 0, 0}, 0));
 
     }
     public int removeElement(int[] nums, int val) {
-        int[] returnArray = new  int[nums.length];
-        int rACount = 0;
         int length = 0;
         for (int i = 0; i < nums.length; i++){
             if (nums[i] != val){
-                returnArray[rACount] = nums[i];
-                rACount++;
                 length++;
+                nums[length - 1] = nums[i];
             }
         }
-        for (int i = 0; i < nums.length; i++){
-            nums[i] = returnArray[i];
-        }
-
         System.out.println(Arrays.toString(nums));
         return length;
     }
