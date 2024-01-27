@@ -9,20 +9,16 @@ public class LengthOfLastWord {
         String in2 = "i don't know...";
 
 
-        System.out.println(new LengthOfLastWord().lengthOfLastWord(in2));
+        System.out.println(new LengthOfLastWord().lengthOfLastWord(in));
     }
     public int lengthOfLastWord(String s) {
         String[] words = s.split(" ");
         String lastWord = words[words.length - 1];
-        char lastChar = lastWord.charAt(lastWord.length() - 1);
+
         while (true) {
+            char lastChar = lastWord.charAt(lastWord.length() - 1);
             if (lastChar == '?' || lastChar == '!' || lastChar == '.'){
-                String replaseChar = "";
-                for (int i = 0; i < lastWord.length() - 1; i++){
-                    replaseChar = replaseChar + lastWord.charAt(i);
-                }
-                lastChar = replaseChar.charAt(replaseChar.length() - 1);
-                lastWord = replaseChar;
+                lastWord = lastWord.substring(0, lastWord.length() - 1);
             }
             else break;
         }
