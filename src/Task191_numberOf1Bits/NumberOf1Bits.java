@@ -12,25 +12,11 @@ public class NumberOf1Bits {
         System.out.println(new NumberOf1Bits().hammingWeight(test3));
     }
     public int hammingWeight(int n) {
-        String y = "";
-        String bits = n + "";
-        if (n < 0){
-            y = y + 1;
-            n &= 0x7fffffff;
-        }
-        while (n != 0) {
-            y = y + (n % 2);
-            n = n / 2;
-        }
+        int count = 0;
 
-
-        int bitCount = 0;
-
-        for (int i = 0; i < y.length(); i++){
-            if (y.charAt(i) == '1'){
-                bitCount++;
-            }
+        for (;n != 0;n >>>= 1) {
+            count += n &1;
         }
-        return bitCount;
+        return count;
     }
 }
