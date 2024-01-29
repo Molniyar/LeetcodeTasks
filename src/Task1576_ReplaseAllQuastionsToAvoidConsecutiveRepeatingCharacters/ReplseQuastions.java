@@ -5,35 +5,29 @@ public class ReplseQuastions {
 
     public static void main(String[] args) {
         String in = "dfji?ja?cb?e";
-        String in1 = "?zs";
-        System.out.println(new ReplseQuastions().modifyString(in1));
+        String in1 = "a?bs";
+        System.out.println(new ReplseQuastions().modifyString(in));
     }
     public String modifyString(String s) {
         char[] result = s.toCharArray();
 
-        String abc = "zabcdefghijklmnopqrstuvwxyza";
+        String abc = "abc";
 
         for (int i = 0; i < s.length(); i++){
             if (result[i] == '?'){
-                char replase = 'a';
-                for (int ii = 0; ii < abc.length(); ii++){
-                    replase = abc.charAt(ii);
+                for (int j = 0; j < abc.length(); j++){
+                    char replace = abc.charAt(j);
 
-                    int minus = i - 1;
-                    if (minus < 0){
-                        minus = 0;
+                    if (i != 0 && result[i - 1] == replace){
+                        continue;
+                    }
+                    if (i != result.length - 1 && result[i + 1] == replace){
+                        continue;
                     }
 
-                    int plus  = i + 1;
-                    if (plus >= s.length()){
-                        plus = s.length() - 1;
-                    }
-
-                    if (result[minus] == replase || result[plus] == replase){
-                        replase = abc.charAt(ii + 1);
-                    }
+                    result[i] = replace;
+                    break;
                 }
-                result[i] = replase;
             }
         }
         return new String(result);
