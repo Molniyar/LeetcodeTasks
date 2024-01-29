@@ -9,36 +9,34 @@ public class PlusOne {
         int[] test = {1, 3, 9, 3};
         int[] test1 = {9, 9, 9};
         int[] test2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] test3 = {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
+        int[] test4 = {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
         System.out.println(Arrays.toString(new PlusOne().plusOne(test)));
         System.out.println(Arrays.toString(new PlusOne().plusOne(test1)));
         System.out.println(Arrays.toString(new PlusOne().plusOne(test2)));
+        System.out.println(Arrays.toString(new PlusOne().plusOne(test3)));
+        System.out.println(Arrays.toString(new PlusOne().plusOne(test4)));
     }
     public int[] plusOne(int[] digits) {
-        int needsToBeLonger = 0;
+        int needToAdd = 1;
         for (int i = 0; i < digits.length; i++){
-            if (digits[i] == 9){
-                needsToBeLonger++;
+            if (digits[i] != 9){
+                needToAdd = 0;
             }
         }
-        String sDig = "";
-        for (int i = 0; i < digits.length; i++){
-            sDig = sDig + digits[i];
+
+        int[] result = new int[digits.length + needToAdd];
+
+        for (int i = 0; i <digits.length; i++){
+            result[i + needToAdd] = digits[i];
         }
-        int dig = Integer.parseInt(sDig);
-        dig++;
 
-        String sResult = dig + "";
-        char[] preResult = sResult.toCharArray();
-        int[] result;
-
-        if (needsToBeLonger == digits.length){
-            result = new int[digits.length + 1];
-        }
-        else result = new int[digits.length];
-
-        for (int i = 0; i < preResult.length; i++){
-            result[i] = preResult[i];
-            result[i] = result[i] - 48;
+        for (int i = result.length - 1; i >= 0; i--){
+            if (result[i] < 9){
+                result[i]++;
+                break;
+            }
+            else result[i] = 0;
         }
         return result;
     }
