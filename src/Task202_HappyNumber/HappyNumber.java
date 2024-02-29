@@ -16,10 +16,6 @@ public class HappyNumber {
             String s = n + "";
             boolean break_ = false;
             for (int i = 0; i < s.length(); i++){
-                //if (s.charAt(i) - 48 == n){
-                //    break_ = true;
-                //    break;
-                //}
                 newN = newN + (s.charAt(i) - 48) * (s.charAt(i) - 48);
             }
             System.out.println(n);
