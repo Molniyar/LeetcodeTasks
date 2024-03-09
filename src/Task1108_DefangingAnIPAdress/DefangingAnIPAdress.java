@@ -8,15 +8,7 @@ public class DefangingAnIPAdress {
         System.out.print(new DefangingAnIPAdress().defangIPaddr(test));
     }
     public String defangIPaddr(String address) {
-        char[] charArray = address.toCharArray();
-
-        String result = "";
-        for (int i = 0; i < charArray.length; i++){
-            if (charArray[i] == '.'){
-                result = result + "[" + charArray[i] + "]";
-            }
-            else result = result + charArray[i];
-        }
-        return result;
+        address = address.replace(".", "[.]");
+        return address;
     }
 }
