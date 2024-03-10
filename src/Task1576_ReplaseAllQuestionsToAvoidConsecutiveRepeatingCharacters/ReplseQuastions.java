@@ -1,4 +1,4 @@
-package Task1576_ReplaseAllQuastionsToAvoidConsecutiveRepeatingCharacters;
+package Task1576_ReplaseAllQuestionsToAvoidConsecutiveRepeatingCharacters;
 
 
 public class ReplseQuastions {
