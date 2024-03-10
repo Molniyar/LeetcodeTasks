@@ -11,17 +11,9 @@ public class ConcatenationOfArray {
         System.out.println(Arrays.toString(new ConcatenationOfArray().getConcatenation(array)));
     }
     public int[] getConcatenation(int[] nums) {
-        int index = nums.length * 2;
-
-        int[] result = new int[index];
-
-        for (int i = 0; i < nums.length; i++){
-            result[i] = nums[i];
-        }
-
-        for (int i = 0; i < nums.length; i++){
-            result[i + nums.length] = nums[i];
-        }
+        int[] result = new int[nums.length * 2];
+        System.arraycopy(nums, 0, result, 0, nums.length);
+        System.arraycopy(nums, 0, result, nums.length, nums.length);
         return result;
     }
 }
