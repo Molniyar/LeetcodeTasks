@@ -1,7 +1,5 @@
 package Task58_LengthOfLastWord;
 
-import Task1576_ReplaseAllQuastionsToAvoidConsecutiveRepeatingCharacters.ReplseQuastions;
-
 public class LengthOfLastWord {
     public static void main(String[] args) {
         String in = "some things are blue";
