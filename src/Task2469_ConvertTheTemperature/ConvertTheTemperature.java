@@ -1,4 +1,4 @@
-package Taks2469_ConvertTheTemperature;
+package Task2469_ConvertTheTemperature;
 
 import java.util.Arrays;
 import java.util.Scanner;
