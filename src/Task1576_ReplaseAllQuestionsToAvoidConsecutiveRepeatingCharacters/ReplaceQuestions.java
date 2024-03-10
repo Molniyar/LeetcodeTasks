@@ -1,12 +1,12 @@
 package Task1576_ReplaseAllQuestionsToAvoidConsecutiveRepeatingCharacters;
 
 
-public class ReplseQuastions {
+public class ReplaceQuestions {
 
     public static void main(String[] args) {
         String in = "dfji?ja?cb?e";
         String in1 = "a?bs";
-        System.out.println(new ReplseQuastions().modifyString(in));
+        System.out.println(new ReplaceQuestions().modifyString(in));
     }
     public String modifyString(String s) {
         char[] result = s.toCharArray();
