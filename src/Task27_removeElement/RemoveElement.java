@@ -1,7 +1,5 @@
 package Task27_removeElement;
 
-import Task1576_ReplaseAllQuastionsToAvoidConsecutiveRepeatingCharacters.ReplseQuastions;
-
 import java.util.Arrays;
 
 public class RemoveElement {
