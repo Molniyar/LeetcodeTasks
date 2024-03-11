@@ -19,10 +19,7 @@ public class KidsWithTheGreatestNumberOfCandies {
                 }
                 else break;
             }
-            if (count == candies.length){
-                result.add(true);
-            }
-            else result.add(false);
+            result.add(count == candies.length);
         }
         return result;
     }
