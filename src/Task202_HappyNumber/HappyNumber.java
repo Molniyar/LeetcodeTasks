@@ -1,7 +1,7 @@
 package Task202_HappyNumber;
 public class HappyNumber {
     public static void main(String[] args) {
-        System.out.println(new HappyNumber().isHappy(7));
+        System.out.println(new HappyNumber().isHappy(19));
     }
     public boolean isHappy(int n) {
         boolean result = false;
@@ -13,15 +13,10 @@ public class HappyNumber {
                 break;
             }
             int newN = 0;
-            String s = n + "";
-            boolean break_ = false;
-            for (int i = 0; i < s.length(); i++){
-                newN = newN + (s.charAt(i) - 48) * (s.charAt(i) - 48);
+            for (int i = n; i != 0; i /= 10){
+                newN += (i % 10) * (i % 10);
             }
             System.out.println(n);
-            if (break_){
-                break;
-            }
             n = newN;
         }
         return result;
