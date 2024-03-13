@@ -10,16 +10,24 @@ public class LengthOfLastWord {
         System.out.println(new LengthOfLastWord().lengthOfLastWord(in));
     }
     public int lengthOfLastWord(String s) {
-        String[] words = s.split(" ");
-        String lastWord = words[words.length - 1];
-
-        while (true) {
-            char lastChar = lastWord.charAt(lastWord.length() - 1);
-            if (lastChar == '?' || lastChar == '!' || lastChar == '.'){
-                lastWord = lastWord.substring(0, lastWord.length() - 1);
+        int length = 0;
+        for (int i = s.length() - 1; i >= 0; i--){
+            switch (s.charAt(i)){
+                case '?', '!', '.' -> {
+                    continue;
+                }
+                case ' ' -> {
+                    if (length == 0){
+                        continue;
+                    }
+                }
+                default -> {
+                    length++;
+                    continue;
+                }
             }
-            else break;
+            break;
         }
-        return lastWord.length();
+        return length;
     }
 }
