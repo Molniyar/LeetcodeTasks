@@ -16,17 +16,17 @@ public class FindFirstOccurense {
 
     }
     public int strStr(String haystack, String needle) {
-        int i2 = 0;
+        int j = 0;
         for (int i = 0; i < haystack.length();i++){
-            if (haystack.charAt(i) == needle.charAt(i2)){
-                i2++;
-                if (i2 == needle.length()){
-                    return i - (i2 - 1);
+            if (haystack.charAt(i) == needle.charAt(j)){
+                j++;
+                if (j == needle.length()){
+                    return i - (j - 1);
                 }
             }
             else {
-                i = i - i2;//можно оптимизировать потому-что в некоторых случаях эта строка не нужна.
-                i2 = 0;
+                i = i - j;//можно оптимизировать потому-что в некоторых случаях эта строка не нужна.
+                j = 0;
 
             }
         }
