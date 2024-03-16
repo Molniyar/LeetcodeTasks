@@ -2,13 +2,17 @@ package Task709_ToLowerCase;
 
 public class ToLowerCase {
     public static void main(String[] args) {
-        System.out.println("АРБУЗ".toLowerCase());
+        System.out.println(new ToLowerCase().toLowerCase("Integer"));
     }
     public String toLowerCase(String s) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < s.length(); i++){
-            //switch ()
+            char sChar = s.charAt(i);
+            if (sChar >= 'A' && sChar <= 'Z'){
+                result.append((char)(sChar + 'a' - 'A'));
+            }
+            else result.append(sChar);
         }
-        return "";
+        return result.toString();
     }
 }
