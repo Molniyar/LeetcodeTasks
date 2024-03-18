@@ -16,7 +16,6 @@ public class PalindrimeNumber {
         for (int i = xLine.length() - 1; i >= 0; i--){
             eniLx = eniLx + xLine.charAt(i);
         }
-        boolean result = xLine.equals(eniLx);
-        return result;
+        return xLine.equals(eniLx);
     }
 }
