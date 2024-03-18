@@ -7,21 +7,21 @@ public class FindFirstPalindromicString {
         String[] test2 = {"abc","car","ada","racecar","cool"};
         String[] test3 = {"abc","dfgfd","ada","book"};
 
-        System.out.println(new FindFirstPalindromicString().firstPalindrome(test3));
+        System.out.println(new FindFirstPalindromicString().firstPalindrome(test2));
     }
     public String firstPalindrome(String[] words) {
-        String result = "";
         for (int i = 0; i < words.length; i++){
-            String reverse = "";
-            for (int j = words[i].length() - 1; j >= 0; j--){
-                reverse = reverse + words[i].charAt(j);
+            boolean isPalindrome = true;
+            for (int j = 0; j < words[i].length() / 2; j++){
+                if (words[i].charAt(j) != words[i].charAt(words[i].length() - 1 - j)){
+                    isPalindrome = false;
+                    break;
+                }
             }
-            if (reverse.equals(words[i])){
-                result = words[i];
-                break;
+            if (isPalindrome){
+                return words[i];
             }
-            else reverse = "";
         }
-        return result;
+        return "";
     }
 }
