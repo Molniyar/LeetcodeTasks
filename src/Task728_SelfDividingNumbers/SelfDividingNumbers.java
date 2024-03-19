@@ -10,18 +10,16 @@ public class SelfDividingNumbers {
     public List<Integer> selfDividingNumbers(int left, int right) {
         List<Integer> result = new ArrayList<>();
         for (int i = left; i <= right; i++){
-            String s = i + "";
+            int divsionCount = 0;
             int count = 0;
-            for (int j = 0; j < s.length(); j++){
-                if (s.charAt(j) - 48 == 0){
-                    break;
+            for (int j = i; j != 0; j /= 10){
+                int digit = j % 10;
+                if (digit != 0 && i % digit == 0){
+                    divsionCount++;
                 }
-                if ((i) % (s.charAt(j) - 48) == 0){
-                    count++;
-                }
-                else break;
+                count++;
             }
-            if (count == s.length()){
+            if (divsionCount == count){
                 result.add(i);
             }
         }
