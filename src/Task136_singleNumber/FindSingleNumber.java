@@ -11,7 +11,7 @@ public class FindSingleNumber {
     }
     public int singleNumber(int[] nums) {
         int[] resultArray = new int[nums.length];
-        HashSet<Integer>preResult = new HashSet<Integer>();
+        HashSet<Integer>preResult = new HashSet<>();
 
         for (int i = 0; i < nums.length; i++){
             boolean preResultLength = preResult.contains(nums[i]);
