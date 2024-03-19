@@ -5,40 +5,29 @@ public class RomanToInteger {
         String test  = "XIV";//14
         String test1 = "XXIVII";//26
 
-        System.out.println(new RomanToInteger().romanToInt(test1));
+        System.out.println(new RomanToInteger().romanToInt(test));
     }
     public int romanToInt(String s) {
         int result = 0;
-        String chars = "IVXLCDM";
-
-        for (int i = 0; i < s.length(); i++){
-            int plus = i + 1;
-            if (plus >= s.length()){
-                plus = s.length() - 1;
+        int prev = 0;
+        for (int i = s.length() - 1; i >= 0; i--){
+            int add = switch (s.charAt(i)) {
+                case 'I' -> 1;
+                case 'V' -> 5;
+                case 'X' -> 10;
+                case 'L' -> 50;
+                case 'C' -> 100;
+                case 'D' -> 500;
+                case 'M' -> 1000;
+                default -> 0;
+            };
+            if (add >= prev){
+                result += add;
             }
-
-            if (chars.indexOf(s.charAt(i)) >= chars.indexOf(s.charAt(plus))){
-                switch (s.charAt(i)) {
-                    case 'I' -> result += 1;
-                    case 'V' -> result += 5;
-                    case 'X' -> result += 10;
-                    case 'L' -> result += 50;
-                    case 'C' -> result += 100;
-                    case 'D' -> result += 500;
-                    case 'M' -> result += 1000;
-                }
+            else {
+                result -= add;
             }
-            if (chars.indexOf(s.charAt(i)) < chars.indexOf(s.charAt(plus))){
-                switch (s.charAt(i)){
-                    case 'I' -> result -= 1;
-                    case 'V' -> result -= 5;
-                    case 'X' -> result -= 10;
-                    case 'L' -> result -= 50;
-                    case 'C' -> result -= 100;
-                    case 'D' -> result -= 500;
-                    case 'M' -> result -= 1000;
-                }
-            }
+            prev = add;
         }
         return result;
     }
