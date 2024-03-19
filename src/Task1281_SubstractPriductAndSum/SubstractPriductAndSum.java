@@ -5,18 +5,15 @@ public class SubstractPriductAndSum {
         System.out.println(new SubstractPriductAndSum().subtractProductAndSum(4421));
     }
     public int subtractProductAndSum(int n) {
-        String N = n + "";
-        int product = 0;
         int sum = 0;
-        for (int i = 0; i < N.length(); i++){
-            if (i == 0){
-                product = N.charAt(i) - 48;
-            }
-            else product = product * (N.charAt(i) - 48);
+        int product = 1;
+        for (int i = n; i != 0; i /= 10){
+            int digit = (i % 10);
+            sum += digit;
+            product *= digit;
         }
-        for (int i = 0; i < N.length(); i++){
-            sum += (N.charAt(i) - 48);
-        }
+        System.out.println(sum);
+        System.out.println(product);
         return product - sum;
     }
 }
