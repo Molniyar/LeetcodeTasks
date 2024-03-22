@@ -7,17 +7,14 @@ public class DifferenceBetweenElementAndDigit {
         System.out.println(new DifferenceBetweenElementAndDigit().differenceOfSum(new int[]{1, 15, 6, 3}));
     }
     public int differenceOfSum(int[] nums) {
-        StringBuilder Snums = new StringBuilder();
-        int element = 0;
-        for (int i = 0; i < nums.length; i++){
-            element = element + nums[i];
-            Snums.append(nums[i]);
+        int elementSum = 0;
+        int digitSum = 0;
+        for (int num : nums) {
+            elementSum += num;
+            for (int j = num; j != 0; j /= 10) {
+                digitSum += (j % 10);
+            }
         }
-        int digit = 0;
-        for (int i = 0; i < Snums.length(); i++){
-            digit = digit + (Snums.charAt(i) - 48);
-            System.out.println(Snums.charAt(i));
-        }
-        return element - digit;
+        return elementSum - digitSum;
     }
 }
