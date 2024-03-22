@@ -7,13 +7,12 @@ public class CountTheDigits {
         System.out.println(new CountTheDigits().countDigits(1248));
     }
     public int countDigits(int num) {
-        String sNum = num + "";
         int result = 0;
-        for (int i = 0; i < sNum.length(); i ++){
-            double d = (double) num / (sNum.charAt(i) - 48);
-            if (d == (int)d){
+        for (int i = num; i != 0; i /= 10){
+            if (num % (i % 10) == 0){
                 result++;
             }
+            int digit = (i % 10);
         }
         return result;
     }
