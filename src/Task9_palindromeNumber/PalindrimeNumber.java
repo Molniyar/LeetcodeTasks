@@ -8,14 +8,18 @@ public class PalindrimeNumber {
         int test3 = -200;
         int test4 = 12766721;
 
-        System.out.println(new PalindrimeNumber().isPalindrome(test2));
+        System.out.println(new PalindrimeNumber().isPalindrome(test));
     }
     public boolean isPalindrome(int x) {
-        String xLine = x + "";
-        String eniLx = "";//xLine, только наоборот(записывается в цикле ниже)
-        for (int i = xLine.length() - 1; i >= 0; i--){
-            eniLx = eniLx + xLine.charAt(i);
+        if (x < 0){
+        return false;
         }
-        return xLine.equals(eniLx);
+        int reverse = 0;
+        for (int i = x, j = 1; i != 0; i /= 10, j *= 10){
+            //int digit = (i % 10);
+            reverse *= 10;
+            reverse += i % 10;
+        }
+        return x == reverse;
     }
 }
