@@ -10,22 +10,18 @@ public class LongestCommonPrefix {
         String[] problem1 = {"flower","flower","flower","flower"};
         String[] problem2 = {"flower","flow","flight"};
 
-        System.out.println(new LongestCommonPrefix().longestCommonPrefix(problem));
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix(problem2));
     }
     public String longestCommonPrefix(String[] strs) {
-        String result = "";
+        int maxLength = 0;
         int shortestLength = strs[0].length();
-
         for (int i = 0; i < strs.length; i++){
             if (strs[i].length() < shortestLength){
                 shortestLength = strs[i].length();
             }
         }
-
-        String check = "";
         int char_ = 0;
         int index = 0;
-
         for (;char_ < shortestLength; char_++) {
             int equalsCharsCount = 0;
             char compareChar = strs[0].charAt(char_);
@@ -36,13 +32,11 @@ public class LongestCommonPrefix {
                 else break;
             }
             if (equalsCharsCount == strs.length){
-                result = result + compareChar;
+                maxLength++;
             }
             else break;
             index = 0;
         }
-
-
-        return result;
+        return strs[0].substring(0, maxLength);
     }
 }
