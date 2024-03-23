@@ -1,9 +1,6 @@
 package Task1_TwoSum;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 public class TwoSum {
     public static void main(String[] args) {
@@ -19,18 +16,21 @@ public class TwoSum {
         int target5 = -8;
 
 
-        System.out.println(Arrays.toString(new TwoSum().twoSum(nums1, target1)));
+        System.out.println(Arrays.toString(new TwoSum().twoSum(nums5, target5)));
     }
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        for (int i = 0; i < nums.length; i++){
-            if (hashMap.containsKey(target - nums[i])){
-                result[0] = i;
-                result[1] = hashMap.get(target - nums[i]);
-                break;
+        for (int i = 0; i < nums.length - 1; i++){
+            for (int j = 1; j < nums.length; j++){
+                if (i == j){
+                    j++;
+                }
+                if (nums[i] + nums[j] == target){
+                    result[0] = i;
+                    result[1] = j;
+                    break;
+                }
             }
-            hashMap.put(nums[i], i);
         }
         return result;
     }

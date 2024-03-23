@@ -1,6 +1,5 @@
 package Task771_JewelsAndStones;
 
-import java.util.BitSet;
 import java.util.HashSet;
 
 public class JewelsAndStones {
@@ -17,13 +16,11 @@ public class JewelsAndStones {
     }
     public int numJewelsInStones(String jewels, String stones) {
         int result = 0;
-        BitSet bitSet = new BitSet(122);
-        for (int i = 0; i < jewels.length();i++){
-            bitSet.set(jewels.charAt(i));
-        }
-        for (int i = 0; i < stones.length(); i++){
-            if (bitSet.get(stones.charAt(i))){
-                result++;
+        for (int i = 0; i < jewels.length(); i++){
+            for (int j = 0; j < stones.length(); j++){
+                if (jewels.charAt(i) == stones.charAt(j)){
+                    result++;
+                }
             }
         }
         return result;
