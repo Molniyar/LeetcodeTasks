@@ -15,29 +15,19 @@ public class MajorityElement {
         System.out.println(new MajorityElement().majorityElement(failed));
     }
     public int majorityElement(int[] nums) {
-        int halfOfLength = nums.length / 2;
-        int numberCount = 0;
-        int result = 0;
-        int x = 0;
-
-        HashSet<Integer> variants = new HashSet<>();
-
-        for (int i = 0; i < nums.length; i++){
-            variants.add(nums[i]);
-        }
-        for (Integer value: variants){
-            for (int j = 0; j < nums.length; j++){
-
-                if (value == nums[j]){
-                    numberCount++;
-                }
+        int count = 0;
+        int candidate = 0;
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
             }
-            if (numberCount > halfOfLength){
-                result = value;
-                break;
-            }
-            else numberCount = 0;
+            count += (num == candidate) ? 1 : -1;
         }
-        return result;
+        count = 0;
+        for (int num : nums) {
+            if (num == candidate)
+                count++;
+        }
+        return candidate;
     }
 }
