@@ -8,48 +8,28 @@ public class Sqrt {
         int test3 = 7;
         int test4 = 99;
         int test5 = 2000000000;
+        int test6 = 0;
 
+        int fail = 2147395599;
 
-        System.out.println(new Sqrt().mySqrt(test5));
+        System.out.println(new Sqrt().mySqrt(fail));
     }
     public int mySqrt(int x) {
-        int result = 1;
-        String s = x + "";
-        int r = Integer.parseInt(s.substring(s.length() / 2));
-
+        int min = 1;
+        int max = Math.min(x, (1<<16) - 1);
         for (;true;){
-            if (result * result > x){
-                result = result * 10;
-            }
-            else break;
-        }
-        for (;true;){
-            if (result * result > x){
-
-            }
-            if (result * result < x){
-
-            }
-        }
-        /*
-        for (;true;){
-
-            if (result * result == x){
+            int result = (max + min) / 2;
+            int check = result * result;
+            if (check == x){
                 return result;
             }
-            else result = result + 1;
-
-            if (result * result > x || (result - 1) * (result - 1) < x){
-                return result - 1;
+            if (check < x && check >= 0){
+                if (min == result){
+                    return result;
+                }
+                min = result;
             }
-
-            if (result * result > x){
-                result = result * 10;
-            }
-            if (result * result < x){
-                result--;
-            }
+            else max = result;
         }
-         */
     }
 }
