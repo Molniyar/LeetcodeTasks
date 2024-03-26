@@ -10,20 +10,10 @@ public class FindSingleNumber {
         System.out.println(new FindSingleNumber().singleNumber(test2));
     }
     public int singleNumber(int[] nums) {
-        int[] resultArray = new int[nums.length];
-        HashSet<Integer>preResult = new HashSet<>();
-
-        for (int i = 0; i < nums.length; i++){
-            boolean preResultLength = preResult.contains(nums[i]);
-            if (preResultLength){
-                preResult.remove(nums[i]);
-            }
-            else preResult.add(nums[i]);
-        }
         int result = 0;
-        for (int i : preResult)
-            result = i;
-
+        for (int i = 0; i < nums.length; i++){
+            result ^= nums[i];
+        }
         return result;
     }
 }
