@@ -1,7 +1,5 @@
 package Task191_numberOf1Bits;
 
-import Task58_LengthOfLastWord.LengthOfLastWord;
-
 public class NumberOf1Bits {
     public static void main(String[] args) {
         int test1 = 64;//4
