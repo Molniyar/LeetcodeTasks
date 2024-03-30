@@ -6,7 +6,8 @@ public class IslandPerimeter {
         System.out.println(new IslandPerimeter().islandPerimeter(new int[][]{{1, 0}}));
         System.out.println();
         System.out.println(new IslandPerimeter().islandPerimeter2(new int[][]{{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}}));
-        System.out.println(new IslandPerimeter().islandPerimeter(new int[][]{{1, 0}}));
+        System.out.println(new IslandPerimeter().islandPerimeter2(new int[][]{{1, 0}}));
+        System.out.println(new IslandPerimeter().islandPerimeter2(new int[][]{{1},{0}}));
     }
     public int islandPerimeter(int[][] grid) {
         int result = 0;
@@ -36,17 +37,29 @@ public class IslandPerimeter {
         return result;
     }
     public int islandPerimeter2(int[][] grid) {
+        int height = grid.length;
+        int width = grid[0].length;
+
         int result = 0;
-        for (int i = 0; i < grid.length; i++){
-            for (int j = 0; j < grid[i].length - 1; j++){
-                result+= grid[i][j] ^ grid[i][j + 1];
+
+        for (int y = 0; y < height; y++){
+            int prev = 0;
+            for (int x = 0; x < width; x++){
+                int keep = grid[y][x];
+                result += prev ^ keep;
+                prev = keep;
             }
+            result += prev;
         }
-        int j = 0;
-        for (int i = 0; i < grid[j].length; i++){
-            for (; j < grid.length - 1; j++){
-                result+= grid[i][j] ^ grid[i + 1][j];
+
+        for (int x = 0; x < width; x++){
+            int prev = 0;
+            for (int y = 0; y < height; y++){
+                int keep = grid[y][x];
+                result += prev ^ keep;
+                prev = keep;
             }
+            result += prev;
         }
         return result;
     }
