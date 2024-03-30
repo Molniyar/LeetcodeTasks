@@ -4,6 +4,9 @@ public class IslandPerimeter {
     public static void main(String[] args) {
         System.out.println(new IslandPerimeter().islandPerimeter(new int[][]{{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}}));
         System.out.println(new IslandPerimeter().islandPerimeter(new int[][]{{1, 0}}));
+        System.out.println();
+        System.out.println(new IslandPerimeter().islandPerimeter2(new int[][]{{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}}));
+        System.out.println(new IslandPerimeter().islandPerimeter(new int[][]{{1, 0}}));
     }
     public int islandPerimeter(int[][] grid) {
         int result = 0;
@@ -28,6 +31,21 @@ public class IslandPerimeter {
                         result++;
                     }
                 }
+            }
+        }
+        return result;
+    }
+    public int islandPerimeter2(int[][] grid) {
+        int result = 0;
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length - 1; j++){
+                result+= grid[i][j] ^ grid[i][j + 1];
+            }
+        }
+        int j = 0;
+        for (int i = 0; i < grid[j].length; i++){
+            for (; j < grid.length - 1; j++){
+                result+= grid[i][j] ^ grid[i + 1][j];
             }
         }
         return result;
