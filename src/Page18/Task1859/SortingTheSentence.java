@@ -15,10 +15,18 @@ public class SortingTheSentence {
         String[] sArrayInRightOrder = new String[wordsCount];
         int startIndex = 0;
         for (int i = 0; i < s.length(); i++){
-            if (s.charAt(i) == ' '){
-                
+            char char_ = s.charAt(i);
+            if (char_ >= '1' && char_ <= '9'){
+                sArrayInRightOrder[char_ - '0' - 1] = s.substring(startIndex, i);
+                startIndex = i + 2;
             }
         }
-
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < sArrayInRightOrder.length - 1; i++){
+            result.append(sArrayInRightOrder[i]);
+            result.append(' ');
+        }
+        result.append(sArrayInRightOrder[sArrayInRightOrder.length - 1]);
+        return result.toString();
     }
 }
