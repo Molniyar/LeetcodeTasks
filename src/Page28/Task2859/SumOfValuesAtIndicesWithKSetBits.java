@@ -24,8 +24,9 @@ public class SumOfValuesAtIndicesWithKSetBits {
         return result;
     }
     public static boolean shouldBeAdded(int num, int k) {
-        for (int i = num; i != 0; i /= 2){
-            if (i % 2 == 1){k--;}
+        for (int i = num; i != 0; i = i >> 1){
+            //if (i % 2 == 1){k--;}
+            if (i >> num - i == 0){k--;}
         }
         return k == 0;
     }
