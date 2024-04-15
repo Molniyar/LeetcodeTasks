@@ -5,20 +5,10 @@ public class FindCenterOfStarGraph {
         System.out.println(new FindCenterOfStarGraph().findCenter(new int[][] {{1,2},{2,3},{4,2}}));
     }
     public int findCenter(int[][] edges) {
-        int num1 = edges[0][0];
-        int num2 = edges[0][1];
-        int result = 0;
-        for (int i = 0; i < edges.length; i++){
-
-            for (int j = 1; j < edges[0].length; j++){
-                if (num1 == edges[i][j]){
-                    result = edges[i][j];
-                }
-                if (num2 == edges[i][j]){
-                    result = edges[i][j];
-                }
-            }
-        }
-        return result;
+        int[] a1 = edges[0];
+        int[] a2 = edges[1];
+        if (a1[0] == a2[0] || a1[0] == a2[1]){return a1[0];}
+        if (a1[1] == a2[0] || a1[1] == a2[1]){return a1[1];}
+        return 0;
     }
 }
