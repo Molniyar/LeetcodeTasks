@@ -16,18 +16,10 @@ public class SumOfValuesAtIndicesWithKSetBits {
     public int sumIndicesWithKSetBits(List<Integer> nums, int k) {
         int result = 0;
         for (int i = 0; i < nums.size(); i++){
-            if (shouldBeAdded(i, k)){
-                System.out.println("добавляется число " + nums.get(i));
+            if (Integer.bitCount(i) == k){
                 result += nums.get(i);
             }
         }
         return result;
-    }
-    public static boolean shouldBeAdded(int num, int k) {
-        for (int i = num; i != 0; i = i >> 1){
-            //if (i % 2 == 1){k--;}
-            if (i >> num - i == 0){k--;}
-        }
-        return k == 0;
     }
 }
