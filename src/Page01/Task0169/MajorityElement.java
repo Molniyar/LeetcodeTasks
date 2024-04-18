@@ -19,11 +19,6 @@ public class MajorityElement {
             }
             count += (num == candidate) ? 1 : -1;
         }
-        count = 0;
-        for (int num : nums) {
-            if (num == candidate)
-                count++;
-        }
         return candidate;
     }
 }
