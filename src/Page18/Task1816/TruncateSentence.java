@@ -11,6 +11,7 @@ public class TruncateSentence {
                 k--;
             }
         }
-        return s.substring(0, endIndex).trim();
+        if (s.charAt(endIndex - 1) == ' '){endIndex--;}
+        return s.substring(0, endIndex);
     }
 }
