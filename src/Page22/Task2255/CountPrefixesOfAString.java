@@ -7,19 +7,9 @@ public class CountPrefixesOfAString {
     }
     public int countPrefixes(String[] words, String s) {
         int result = 0;
-        for (int i = 0; i < words.length; i++){
-            boolean isPrefix = true;
-            if (words[i].length() <= s.length()) {
-                for (int j = 0; j < words[i].length() && j < s.length(); j++) {
-                    if (words[i].charAt(j) != s.charAt(j)) {
-                        isPrefix = false;
-                        break;
-                    }
-
-                }
-                if (isPrefix) {
-                    result++;
-                }
+        for (String word : words) {
+            if (s.startsWith(word)) {
+                result++;
             }
         }
         return result;
