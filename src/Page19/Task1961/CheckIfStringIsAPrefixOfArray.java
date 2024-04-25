@@ -4,17 +4,14 @@ import java.util.Objects;
 
 public class CheckIfStringIsAPrefixOfArray {
     public static void main(String[] args) {
-        System.out.println(new CheckIfStringIsAPrefixOfArray().isPrefixString("ccccccccc", new String[]{"c", "cc"}));
+        System.out.println(new CheckIfStringIsAPrefixOfArray().isPrefixString("ccc", new String[]{"c","cc","ccc"}));
     }
     public boolean isPrefixString(String s, String[] words) {
-        boolean result = false;
-        StringBuilder S = new StringBuilder();
-        for (String word : words) {
-            S.append(word);
-            if (Objects.equals(s, S.toString())) {
-                result = true;
-            }
+        int x = 0;
+        for (int i = 0, j = 0; i < s.length() && j < words.length; i+=words[j].length(), j++){
+            if (!s.startsWith(words[j],i)){return false;}
+            x+=words[j].length();
         }
-        return result;
+        return x == s.length();
     }
 }
