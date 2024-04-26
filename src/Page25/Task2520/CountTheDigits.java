@@ -10,7 +10,6 @@ public class CountTheDigits {
             if (num % (i % 10) == 0){
                 result++;
             }
-            int digit = (i % 10);
         }
         return result;
     }
