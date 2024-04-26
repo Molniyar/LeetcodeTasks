@@ -1,4 +1,4 @@
-package Page9.Task0844;
+package Page09.Task0844;
 
 public class BackspaceStringCompare {
     public static void main(String[] args) {

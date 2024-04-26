@@ -1,4 +1,4 @@
-package Page9.Task0938;
+package Page09.Task0938;
 
 public class RangeSumOfBST {
     public static void main(String[] args) {
