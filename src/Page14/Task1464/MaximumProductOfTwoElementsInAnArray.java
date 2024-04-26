@@ -6,18 +6,13 @@ public class MaximumProductOfTwoElementsInAnArray {
     }
     public int maxProduct(int[] nums) {
         int maxNum = 0;
-        int index = 0;
-        for (int i = 0; i < nums.length; i++){
-            if (nums[i] > maxNum){
-                index = i;
-                maxNum = nums[i];
-            }
-        }
-        nums[index] = -1;
         int maxNum2 = 0;
-        for (int i = 0; i < nums.length; i++){
-            if (nums[i] > maxNum2){
-                maxNum2 = nums[i];
+        for (int num : nums) {
+            if (num > maxNum) {
+                maxNum2 = maxNum;
+                maxNum = num;
+            } else if (num > maxNum2) {
+                maxNum2 = num;
             }
         }
         return (maxNum - 1) * (maxNum2 - 1);
