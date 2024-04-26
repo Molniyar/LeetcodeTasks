@@ -18,7 +18,6 @@ public class PlusOne {
         System.out.println(Arrays.toString(new PlusOne().plusOne(problem0)));
     }
     public int[] plusOne(int[] digits) {
-        int needToAdd = 0;
         digits[digits.length - 1]++;
         for (int i = digits.length - 1; i > 0; i--){
             if (digits[i] > 9){
@@ -26,15 +25,13 @@ public class PlusOne {
                 digits[i - 1]++;
             }
         }
-        if (digits[0] == 10){
-            needToAdd = 1;
-            digits[0] = 0;
+        if (digits[0] != 10) {
+            return digits;
         }
-        int[] result = new int[digits.length + needToAdd];
-        System.arraycopy(digits, 0, result, needToAdd, digits.length);
-        if (result.length > digits.length){
-            result[0] = 1;
-        }
+        int[] result = new int[digits.length + 1];
+        System.arraycopy(digits, 0, result, 1, digits.length);
+        result[0] = 1;
+        result[1] = 0;
         return result;
     }
 }
