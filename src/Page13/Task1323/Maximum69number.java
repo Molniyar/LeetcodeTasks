@@ -5,7 +5,6 @@ public class Maximum69number {
         System.out.println(new Maximum69number().maximum69Number(9966));
     }
     public int maximum69Number (int num) {
-        boolean canBeChanged = true;
         int preResult = 0;
         for (int i = num; i != 0; i /= 10){
             int digit = (i % 10);
@@ -13,15 +12,22 @@ public class Maximum69number {
             preResult += digit;
         }
         int result = 0;
-        for (int i = preResult; i != 0; i /= 10){
+
+        int i = preResult;
+        for (; i != 0; i /= 10){
             int digit = (i % 10);
             result *= 10;
 
-            if (digit == 6 && canBeChanged){
+            if (digit == 6){
                 result += 9;
-                canBeChanged = false;
+                break;
             }
             else result += digit;
+        }
+        i /= 10;
+        for (; i != 0; i /= 10){
+            result *= 10;
+            result+= i % 10;
         }
         return result;
     }
