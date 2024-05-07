@@ -9,34 +9,27 @@ public class LongestCommonPrefix {
         String[] problem  = {"a"};
         String[] problem1 = {"flower","flower","flower","flower"};
         String[] problem2 = {"flower","flow","flight"};
+        String[] problem3 = {"","b"};
+        String[] problem4 = {"aaa","aa","aaa"};
+        String[] problem5 = {"c","acc","ccc"};
 
-        System.out.println(new LongestCommonPrefix().longestCommonPrefix(problem2));
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix(problem1));
     }
     public String longestCommonPrefix(String[] strs) {
-        int maxLength = 0;
-        int shortestLength = strs[0].length();
+        int end = strs[0].length();
+        int max = end;
+
         for (int i = 0; i < strs.length; i++){
-            if (strs[i].length() < shortestLength){
-                shortestLength = strs[i].length();
-            }
-        }
-        int char_ = 0;
-        int index = 0;
-        for (;char_ < shortestLength; char_++) {
-            int equalsCharsCount = 0;
-            char compareChar = strs[0].charAt(char_);
-            for (; index < strs.length; index++) {
-                if (compareChar == strs[index].charAt(char_)){
-                    equalsCharsCount++;
+            int count = 0;
+            for (int j = 0; j < strs[i].length() && j < strs[0].length(); j++){
+                if (strs[i].charAt(j) == strs[0].charAt(j)){
+                    count++;
                 }
                 else break;
             }
-            if (equalsCharsCount == strs.length){
-                maxLength++;
-            }
-            else break;
-            index = 0;
+            end = Math.clamp(count,0,max);
+            max = end;
         }
-        return strs[0].substring(0, maxLength);
+        return strs[0].substring(0,end);
     }
 }
