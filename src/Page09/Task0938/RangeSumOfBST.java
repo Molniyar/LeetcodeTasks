@@ -20,21 +20,11 @@ public class RangeSumOfBST {
         int val = root.val;
         if (val >= low && val <= high){
             result+= val;
-            if (val == low){
-                result+= rangeSumBST(root.right, low, high);
-            }
-            else if (val == high){
-                result+= rangeSumBST(root.left, low, high);
-            }
-            else {
-                result+= rangeSumBST(root.right, low, high);
-                result+= rangeSumBST(root.left, low, high);
-            }
         }
-        else if (root.val < low){
+        if (val < high){
             result+= rangeSumBST(root.right, low, high);
         }
-        else {
+        if (val > low){
             result+= rangeSumBST(root.left, low, high);
         }
         return result;
