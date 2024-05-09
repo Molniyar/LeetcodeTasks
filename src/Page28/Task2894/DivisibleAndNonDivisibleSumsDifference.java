@@ -5,14 +5,12 @@ public class DivisibleAndNonDivisibleSumsDifference {
         System.out.println(new DivisibleAndNonDivisibleSumsDifference().differenceOfSums(10, 3));
     }
     public int differenceOfSums(int n, int m) {
-        int all = (n * (n-1)) / 2;
+        int all = divisibleSum(n,1);
 
-        int divisible = 0;
-        for (int i = 1; i <= n; i++){
-            if (i % m == 0){
-                divisible += i;
-            }
-        }
+        int divisible = divisibleSum(n,m);
         return all - divisible - divisible;
+    }
+    public static int divisibleSum(int n, int divide){
+        return n/divide * (n/divide+1)/2*divide;
     }
 }
