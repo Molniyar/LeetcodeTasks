@@ -9,7 +9,7 @@ public class ReplaceAllDigitsWithCharacters {
         for (int i = 0; i < str.length;i++){
             char char_ = str[i];
             if (char_ >= '0' && char_ <= '9'){
-                str[i] = (char)(str[i-1]+(char_-48));
+                str[i] = (char)(str[i-1]+(char_-'0'));
             }
         }
         return new String(str);
