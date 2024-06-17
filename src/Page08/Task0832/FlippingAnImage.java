@@ -13,13 +13,10 @@ public class FlippingAnImage {
     }
     public int[][] flipAndInvertImage(int[][] image) {
         for (int i = 0; i < image.length; i++){
-            for (int j = 0, m = image[i].length-1; j < m; j++, m--){
+            for (int j = 0, m = image[i].length-1; j <= m; j++, m--){
                 int keep = image[i][j];
-                image[i][j] = image[i][m];
-                image[i][m] = keep;
-            }
-            for (int j = 0; j < image[i].length; j++){
-                image[i][j] = Math.abs(image[i][j]-1);
+                image[i][j] = 1-image[i][m];
+                image[i][m] = 1-keep;
             }
         }
         return image;
