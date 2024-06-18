@@ -30,18 +30,18 @@ public class HowManyNumbersAreSmallerThanTheCurrentNumber {
     }
 
     public int[] smallerNumbersThanCurrent2(int[] nums) {
-        int[] result = new int[nums.length];
-
-        int[] numArr = new int[101];
+        short[] numArr = new short[101];
         for (int num : nums) {
             numArr[num]++;
         }
-        for (int i = 0; i < nums.length; i++){
-            for (int j = nums[i]; j >=0; j--){
-                result[i]+=numArr[j];
-            }
-            result[i] -= numArr[nums[i]];
+        for (int i = 1; i < numArr.length; i++) {
+            numArr[i] += numArr[i-1];
         }
-        return result;
+        for (int i = 0; i < nums.length; i++){
+            if (nums[i] > 0) {
+                nums[i] = numArr[nums[i] - 1];
+            }
+        }
+        return nums;
     }
 }
