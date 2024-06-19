@@ -1,5 +1,6 @@
 package Page25.Task2553;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,27 +10,34 @@ public class SeparateTheDigitsInAnArray {
         System.out.println(Arrays.toString(new SeparateTheDigitsInAnArray().separateDigits(new int[]{13, 25, 83, 77})));
     }
     public int[] separateDigits(int[] nums) {
-        List<Integer> preResult = new ArrayList<>();
-
-        int start = 0;
+        int length = 0;
         for (int i = 0; i < nums.length; i++){
-            List<Integer> keep = new ArrayList<>();
             for (int j = nums[i]; j != 0; j /= 10){
-                int digit = (j % 10);
-                keep.add(digit);
+                length++;
             }
-            int j = 0;
-            for (; j < keep.size(); j++){
-                preResult.add(start, keep.get(j));
-            }
-            start+= j;
         }
 
-        int[] result = new int[preResult.size()];
-        for (int i = 0; i < result.length; i++){
-            result[i] = preResult.get(i);
+        int[] result = new int[length];
+
+        for (int i = 0, i2 = 0; i < nums.length; i++){
+            int k  = i2;
+
+            for (int j = nums[i]; j != 0; j /= 10, i2++){
+                result[i2] = (j % 10);
+            }
+
+            reverse(result, k, i2-1);
         }
 
         return result;
+    }
+    public static void reverse(int[] arr, int start, int end){
+        System.out.println(start);
+        System.out.println(end);
+        for (int i = start, j = end; i < j; i++, j--){
+            int keep = arr[j];
+            arr[j] = arr[i];
+            arr[i] = keep;
+        }
     }
 }
