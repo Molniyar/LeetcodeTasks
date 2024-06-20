@@ -5,15 +5,11 @@ public class AddDigits {
 
     }
     public int addDigits(int num) {
-        for (;;) {
-            int keep = 0;
-            for (int i = num; i != 0; i /= 10) {
-                keep += (i % 10);
-            }
-            if (keep < 10){
-                return keep;
-            }
-            num = keep;
-        }
+        if (num < 10){return num;}
+
+        int res = num % 9;
+
+        if (res == 0){return 9;}
+        return res;
     }
 }
