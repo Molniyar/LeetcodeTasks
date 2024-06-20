@@ -1,5 +1,7 @@
 package Page00.Task0014;
 
+import javax.print.attribute.standard.Media;
+
 public class LongestCommonPrefix {
     public static void main(String[] args) {
         String[] test  = {"have","how","ham","house"};//h
@@ -16,13 +18,19 @@ public class LongestCommonPrefix {
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(problem1));
     }
     public String longestCommonPrefix(String[] strs) {
-        int end = strs[0].length();
+        int end = strs[0].length();//changes
+        int l = strs[0].length();  //never changes
+        String s = strs[0];
+
         int max = end;
 
         for (int i = 0; i < strs.length; i++){
+            String keepString = strs[i];
+            int keepLength = keepString.length();
+
             int count = 0;
-            for (int j = 0; j < strs[i].length() && j < strs[0].length(); j++){
-                if (strs[i].charAt(j) == strs[0].charAt(j)){
+            for (int j = 0; j < keepLength && j < l; j++){
+                if (keepString.charAt(j) == strs[0].charAt(j)){
                     count++;
                 }
                 else break;
