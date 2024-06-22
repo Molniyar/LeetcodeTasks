@@ -32,8 +32,6 @@ public class SeparateTheDigitsInAnArray {
         return result;
     }
     public static void reverse(int[] arr, int start, int end){
-        System.out.println(start);
-        System.out.println(end);
         for (int i = start, j = end; i < j; i++, j--){
             int keep = arr[j];
             arr[j] = arr[i];
