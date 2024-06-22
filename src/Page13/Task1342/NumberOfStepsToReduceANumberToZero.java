@@ -5,13 +5,7 @@ public class NumberOfStepsToReduceANumberToZero {
 
     }
     public int numberOfSteps(int num) {
-        int result = 0;
-        for (; num > 0; result++){
-            if (num % 2 == 0){
-                num /= 2;
-            }
-            else num--;
-        }
-        return result;
+        if (num == 0){return 0;}
+        return (Integer.bitCount(Integer.highestOneBit(num)-1)) + Integer.bitCount(num);
     }
 }
