@@ -7,20 +7,21 @@ public class LeftAndRightSumDifferences {
         System.out.println(Arrays.toString(new LeftAndRightSumDifferences().leftRightDifference(new int[]{10, 4, 8, 3})));
     }
     public int[] leftRightDifference(int[] nums) {
-        int[] result = new int[nums.length];
-
         int keepLeftNum = 0;
-        int keepRightNum = 0;
 
+        int RkeepRightNum = 0;
         for (int i = 0; i < nums.length; i++){
-            //System.out.println(nums[i]);
-            result[i] = keepLeftNum;
-            keepLeftNum += nums[i];
+            RkeepRightNum+=nums[i];
         }
-        for (int i = nums.length-1; i >= 0; i--){
-            result[i] = Math.abs(result[i] - keepRightNum);
-            keepRightNum += nums[i];
+
+        for (int i = 0, j = nums.length-1; i < nums.length; i++, j--){
+            int keep = nums[i];
+            nums[i] = keepLeftNum;
+            keepLeftNum += keep;
+
+            RkeepRightNum -= keep;
+            nums[i] = Math.abs(nums[i] - RkeepRightNum);
         }
-        return result;
+        return nums;
     }
 }
