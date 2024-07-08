@@ -2,6 +2,7 @@ package Page05.Task0506;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class RelativeRanks {
     public static void main(String[] args) {
@@ -10,26 +11,20 @@ public class RelativeRanks {
     public String[] findRelativeRanks(int[] score) {
         String[] result = new String[score.length];
 
-        for (int i = 0; i < score.length; i++){
-            int max = -1;
-            int index = -1;
-            for (int j = 0; j < score.length; j++){
-                int keep = score[j];
-                if (keep > max){
-                    max = keep;
-                    index = j;
-                }
-            }
+        result[0] = "Gold Medal";
+        if (result.length < 2){return result;}
 
-            switch (i){
-                case 0 -> result[index] = "Gold Medal";
-                case 1 -> result[index] = "Silver Medal";
-                case 2 -> result[index] = "Bronze Medal";
-                default -> result[index] = i+1+"";
-            }
+        result[1] = "Silver Medal";
 
-            score[index] = -1;
+        if (result.length > 2){result[2] = "Bronze Medal";}
+
+
+        for (int i = 3; i < result.length; i++){
+            result[i] = i+1+"";
         }
+
+
+        Arrays.sort(indexes, Comparator.comparingInt(index -> heights[index]));
         return result;
     }
 }
