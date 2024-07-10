@@ -10,21 +10,27 @@ public class RelativeRanks {
     }
     public String[] findRelativeRanks(int[] score) {
         String[] result = new String[score.length];
-
         result[0] = "Gold Medal";
         if (result.length < 2){return result;}
-
         result[1] = "Silver Medal";
-
         if (result.length > 2){result[2] = "Bronze Medal";}
-
-
         for (int i = 3; i < result.length; i++){
             result[i] = i+1+"";
         }
 
 
-        Arrays.sort(indexes, Comparator.comparingInt(index -> heights[index]));
-        return result;
+        Integer[] indexes = new Integer[result.length];
+        for (int i = 0; i < result.length; i++) {
+            indexes[i] = i;
+        }
+
+        Arrays.sort(indexes, Comparator.comparingInt(index -> score[index]));
+
+        String[] sortedArray = new String[result.length];
+        for (int i = 0; i < result.length; i++) {
+            sortedArray[indexes[i]] = result[result.length-1-i];
+        }
+
+        return sortedArray;
     }
 }
