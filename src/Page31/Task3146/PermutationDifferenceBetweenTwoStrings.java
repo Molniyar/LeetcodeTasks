@@ -5,10 +5,22 @@ public class PermutationDifferenceBetweenTwoStrings {
 
     }
     public int findPermutationDifference(String s, String t) {
-        int result = 0;
-        for (int i = 0; i < s.length(); i++){
-            result += Math.abs(i - t.indexOf(s.charAt(i)));
+        int[] arr = new int[26];
+
+        for(int i = 0; i < s.length(); i++){
+            arr[s.charAt(i)-'a'] = i;
         }
-        return result;
+
+        for(int i = 0; i < t.length(); i++){
+            int keep = t.charAt(i)-'a';
+            arr[keep] = Math.abs(arr[keep]-i);
+        }
+
+        int res = 0;
+        for(int i = 0; i < 26; i++){
+            res += arr[i];
+        }
+
+        return res;
     }
 }
