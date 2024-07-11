@@ -10,17 +10,10 @@ public class SumOfDigitsInBaseK {
         int res = 0;
 
         do {
-            res *= 10;
             res += (n % k);
             n /= k;
         } while (n != 0);
 
-        int result = 0;
-
-        for (int i = res; i != 0; i /= 10){
-            result += (i % 10);
-        }
-
-        return result;
+        return res;
     }
 }
