@@ -6,14 +6,18 @@ public class LexicographicallySmallestPalindrome {
     }
     public String makeSmallestPalindrome(String s) {
         char[] res = s.toCharArray();
-        for (int i = 0; i < s.length()/2; i++){
-            char sec = res[i];
-            int keepIndex = s.length()-1-i;
 
-            if (res[keepIndex] < sec){
-                res[i] = res[keepIndex];
+        int halfLength = s.length()/2;
+        for (int i = 0; i < halfLength; i++){
+            char sec = res[i];
+
+            int keepIndex = s.length()-1-i;
+            char keep = res[keepIndex];
+
+            if (keep < sec){
+                res[i] = keep;
             }
-            if (res[keepIndex] > sec){
+            else if (keep > sec){
                 res[keepIndex] = sec;
             }
         }
