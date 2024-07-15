@@ -29,7 +29,7 @@ public class LongestCommonPrefix {
             int keepLength = keepString.length();
 
             int count = 0;
-            for (int j = 0; j < keepLength && j < l; j++){
+            for (int j = 0; j < Math.min(keepLength, l); j++){
                 if (keepString.charAt(j) == strs[0].charAt(j)){
                     count++;
                 }
