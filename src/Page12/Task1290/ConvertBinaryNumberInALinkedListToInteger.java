@@ -6,10 +6,8 @@ public class ConvertBinaryNumberInALinkedListToInteger {
     }
     public int getDecimalValue(ListNode head) {
         int res = 0;
-        while (head != null) {
-            res <<= 1;
-            res+=head.val;
-             head = head.next;
+        for (;head != null; res <<= 1,res+=head.val,head = head.next) {
+
         }
         return res;
     }
