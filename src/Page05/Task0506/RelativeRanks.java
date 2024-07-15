@@ -9,27 +9,21 @@ public class RelativeRanks {
         System.out.println(Arrays.toString(new RelativeRanks().findRelativeRanks(new int[]{123123,11921,1,0,123})));
     }
     public String[] findRelativeRanks(int[] score) {
-        String[] result = new String[score.length];
-        result[0] = "Gold Medal";
-        if (result.length < 2){return result;}
-        result[1] = "Silver Medal";
-        if (result.length > 2){result[2] = "Bronze Medal";}
-        for (int i = 3; i < result.length; i++){
-            result[i] = i+1+"";
-        }
-
-
-        Integer[] indexes = new Integer[result.length];
-        for (int i = 0; i < result.length; i++) {
+        Integer[] indexes = new Integer[score.length];
+        for (int i = 0; i < score.length; i++) {
             indexes[i] = i;
         }
 
         Arrays.sort(indexes, Comparator.comparingInt(index -> score[index]));
 
-        String[] sortedArray = new String[result.length];
-        for (int i = 0; i < result.length; i++) {
-            sortedArray[indexes[i]] = result[result.length-1-i];
+        String[] sortedArray = new String[score.length];
+
+        for (int i = 0; i < score.length-3; i++) {
+            sortedArray[indexes[i]] = score.length-i+"";
         }
+        if (score.length > 0){sortedArray[indexes[score.length - 1]] = "Gold Medal";}
+        if (score.length > 1){sortedArray[indexes[score.length - 2]] = "Silver Medal";}
+        if (score.length > 2){sortedArray[indexes[score.length - 3]] = "Bronze Medal";}
 
         return sortedArray;
     }
