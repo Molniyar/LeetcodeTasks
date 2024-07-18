@@ -11,31 +11,31 @@ public class SeparateTheDigitsInAnArray {
     }
     public int[] separateDigits(int[] nums) {
         int length = 0;
+
+        byte[] lengths = new byte[nums.length];
         for (int i = 0; i < nums.length; i++){
+            int l = 0;
             for (int j = nums[i]; j != 0; j /= 10){
                 length++;
+                l++;
             }
+            lengths[i] = (byte) l;
         }
 
         int[] result = new int[length];
 
         for (int i = 0, i2 = 0; i < nums.length; i++){
             int k  = i2;
+            int K = i2+lengths[i]-1;
 
-            for (int j = nums[i]; j != 0; j /= 10, i2++){
-                result[i2] = (j % 10);
+            int l = 0;
+
+            for (int j = nums[i]; j != 0; j /= 10,K--){
+                result[K] = (j % 10);
             }
-
-            reverse(result, k, i2-1);
+            i2+=lengths[i];
         }
 
         return result;
-    }
-    public static void reverse(int[] arr, int start, int end){
-        for (int i = start, j = end; i < j; i++, j--){
-            int keep = arr[j];
-            arr[j] = arr[i];
-            arr[i] = keep;
-        }
     }
 }
