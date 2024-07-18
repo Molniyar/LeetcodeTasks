@@ -12,21 +12,30 @@ public class StringToInteger {
         boolean hasMinus = false;
 
         while (startIndex < s.length()) {
-            if ("+-1234567890".contains(s.charAt(startIndex)+"")){
-                switch (s.charAt(startIndex)){
-                    case '-' -> {
-                        hasMinus=true;
-                        startIndex++;
-                    }
-                    case '+' -> {
-                        hasMinus=false;
-                        startIndex++;
-                    }
+            boolean break_ = false;
+            switch (s.charAt(startIndex)){
+                case '-' -> {
+                    hasMinus=true;
+                    startIndex++;
+                    break_ = true;
                 }
-                break;
+                case '+' -> {
+                    hasMinus=false;
+                    startIndex++;
+                    break_ = true;
+                }
+                case '0','1','2','3','4','5','6','7','8','9' -> {
+                    break_ = true;
+                }
+                case ' ' -> {
+                    break;
+                }
+                default -> {
+                    return 0;
+                }
             }
-            else if (s.charAt(startIndex) != ' '){
-                return 0;
+            if (break_){
+                break;
             }
             startIndex++;
         }
