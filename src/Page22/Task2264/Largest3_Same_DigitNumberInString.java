@@ -5,11 +5,12 @@ public class Largest3_Same_DigitNumberInString {
         System.out.println(new Largest3_Same_DigitNumberInString().largestGoodInteger("3200014888"));
     }
     public String largestGoodInteger(String num) {
-        String res = "";
         char resChar = 0;
         int count = 0;
         char keep = 0;
 
+        int start = 0;
+        int end = 0;
         for (int i = 0; i < num.length(); i++){
             char char_ = num.charAt(i);
             if (keep != char_){
@@ -22,11 +23,13 @@ public class Largest3_Same_DigitNumberInString {
             count++;
 
             if (count == 3 && char_ > resChar){
-                res = num.substring(i-2,i+1);
+                start = i-2;
+                end   = i+1;
+
                 resChar = char_;
             }
         }
 
-        return res;
+        return num.substring(start, end);
     }
 }
