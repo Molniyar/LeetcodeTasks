@@ -1,5 +1,6 @@
 package Page14.Task1436;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,13 +9,17 @@ public class DestinationCity {
 
     }
     public String destCity(List<List<String>> paths) {
-        String s = paths.get(0).get(0);
-        for (int j = 0; j < paths.size(); j++){
-            if (Objects.equals(paths.get(j).get(0), s)){
-                s = paths.get(j).get(1);
-                j = 0;
-            }
+        HashMap<String, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < paths.size(); i++){
+            var keep = paths.get(i);
+            map.put(keep.get(0), map.getOrDefault(keep.get(0), 0) + 1);
+            map.put(keep.get(1), map.getOrDefault(keep.get(1), 0) - 1);
         }
-        return s;
+
+        for(var cityDegPair : map.entrySet()){
+            if(cityDegPair.getValue() == -1)return cityDegPair.getKey();
+        }
+        return "";
     }
 }
