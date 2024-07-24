@@ -9,13 +9,12 @@ public class ReverseBits {
         System.out.println(new ReverseBits().reverseBits(n));
     }
     public int reverseBits(int n) {
-        int result = 0;
-        if (n < 0){result |= 1;}
-        for (int j = 1;j <= 31; j++){
-            result |= (((n & (1 << 31-j)) > 0) ? 1 : 0) << j;
-        }
-        if (n % 2 == 1){result |= -2147483648;}
-        return result;
-    }
+        n = ((n & 0xffff0000) >>> 16) | ((n & 0x0000ffff) << 16);
+        n = ((n & 0xff00ff00) >>> 8)  | ((n & 0x00ff00ff) << 8);
+        n = ((n & 0xf0f0f0f0) >>> 4)  | ((n & 0x0f0f0f0f) << 4);
+        n = ((n & 0xcccccccc) >>> 2)  | ((n & 0x33333333) << 2);
+        n = ((n & 0xaaaaaaaa) >>> 1)  | ((n & 0x55555555) << 1);
 
+        return n;
+    }
 }
