@@ -1,26 +1,30 @@
 package Page14.Task1475;
 
+import java.util.Stack;
+
 public class FinalPricesWithASpecialDiscountInAShop {
     public static void main(String[] args) {
 
     }
     public int[] finalPrices(int[] prices) {
-        for (int i = 0; i < prices.length-1; i++){
-            int index = i+1;
+        Stack<Integer> stack = new Stack<>();
 
-            boolean isLower = false;
+        for (int i = prices.length-1; i >= 0; i--){
+            int keep = prices[i];
 
-            for (; index < prices.length; index++){
-                if (prices[i] >= prices[index]){
-                    isLower = true;
-                    break;
+            if (stack.empty() || stack.peek() < keep){
+                if (!stack.empty()){
+                    keep -= stack.peek();
+                }
+                stack.push(keep);
+            }
+            else {
+                for (int j = 0; j < stack.size(); j++){
+
                 }
             }
-
-            if (isLower){
-                prices[i]-=prices[index];
-            }
         }
+
         return prices;
     }
 }
