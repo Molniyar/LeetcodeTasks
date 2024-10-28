@@ -5,12 +5,17 @@ public class A1bitAnd2bitCharacters {
 
     }
     public boolean isOneBitCharacter(int[] bits) {
-        int count = 0;
+        boolean oneBit = false;
 
-        for(int i = bits.length-2; i >= 0 && bits[i] != 0; i--){
-            count++;
+        for (int i = 0; i < bits.length; i++){
+            if (bits[i] == 1){
+                oneBit = false;
+                i++;
+                continue;
+            }
+            oneBit = true;
         }
 
-        return count%2 == 0;
+        return oneBit;
     }
 }
