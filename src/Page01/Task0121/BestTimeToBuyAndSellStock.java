@@ -5,19 +5,23 @@ public class BestTimeToBuyAndSellStock {
 
     }
     public int maxProfit(int[] prices) {
-        int buy = prices[0];
+        int x = prices[0];
 
         int profit = 0;
 
-        for (int i = 1; i < prices.length; i++) {
+        for (int i = 1; i < prices.length; i++){//if "i" is equals to 0, "if (keep < x) {/x = keep;/continue;/}" is doing nothing
             int keep = prices[i];
 
-            if (keep < buy) {
-                buy = prices[i];
+            if (keep < x){
+                x = keep;
                 continue;
             }
-            if (keep - buy > profit) {profit = prices[i] - buy;}
+
+            if ((keep - x) > profit){
+                profit = keep - x;
+            }
         }
+
         return profit;
     }
 }
