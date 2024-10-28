@@ -10,17 +10,18 @@ class MyQueue {
 
     }
 
-    public void push(int x) {
-        while(!main.empty()){
+    public void push(int x) {// i can not use stack.elementAt(0);
+        while (!main.isEmpty()) {
             keep.push(main.pop());
         }
         main.push(x);
-        while(!keep.empty()){
+
+        while (!keep.isEmpty()) {
             main.push(keep.pop());
         }
     }
 
-    public int pop() {// i can not use stack.elementAt(0);
+    public int pop() {
         return main.pop();
     }
 
@@ -29,6 +30,6 @@ class MyQueue {
     }
 
     public boolean empty() {
-        return main.empty();
+        return main.isEmpty();
     }
 }
