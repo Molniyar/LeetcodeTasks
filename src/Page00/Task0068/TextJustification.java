@@ -41,5 +41,4 @@ public class TextJustification {
 
         return res;
     }
-    }
 }
