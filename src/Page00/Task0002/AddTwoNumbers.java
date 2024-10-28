@@ -2,32 +2,73 @@ package Page00.Task0002;
 
 public class AddTwoNumbers {
     public static void main(String[] args) {
+        ListNode test0_1 = new ListNode(2,new ListNode(4, new ListNode(3)));
+        ListNode test0_2 = new ListNode(5,new ListNode(6, new ListNode(4)));
 
+        printListNode(new AddTwoNumbers().addTwoNumbers(test0_1, test0_2));
+
+        test0_1 = new ListNode(2,new ListNode(4));
+        test0_2 = new ListNode(5,new ListNode(6, new ListNode(4)));
+
+        printListNode(new AddTwoNumbers().addTwoNumbers(test0_1, test0_2));
+
+        test0_1 = new ListNode(2,new ListNode(4, new ListNode(3)));
+        test0_2 = new ListNode(5,new ListNode(6));
+
+        printListNode(new AddTwoNumbers().addTwoNumbers(test0_1, test0_2));
+
+        test0_1 = new ListNode(2,new ListNode(4, new ListNode(6)));
+        test0_2 = new ListNode(5,new ListNode(6, new ListNode(4)));
+
+        printListNode(new AddTwoNumbers().addTwoNumbers(test0_1, test0_2));
+
+        test0_1 = new ListNode(2,new ListNode(4));
+        test0_2 = new ListNode(5,new ListNode(6, new ListNode(9)));
+
+        printListNode(new AddTwoNumbers().addTwoNumbers(test0_1, test0_2));
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode tail = dummyHead;
-        int carry = 0;
+        ListNode res = new ListNode(0);
+        ListNode write = res;
 
-        while (l1 != null || l2 != null || carry != 0) {
-            int digit1 = (l1 != null) ? l1.val : 0;
-            int digit2 = (l2 != null) ? l2.val : 0;
+        ListNode r2 = l2;
 
-            int sum = digit1 + digit2 + carry;
-            int digit = sum % 10;
-            carry = sum / 10;
+        int rest = 0;
+        for (;l1 != null || l2 != null || rest > 0;){
+            int num1 = 0;
+            if (l1 != null){num1 = l1.val;}
+            int num2 = 0;
+            if (l2 != null){num2 = l2.val;}
 
-            tail.next = new ListNode(digit);
-            tail = tail.next;
+            int sum = num1 + num2 + rest;
+            rest = 0;
+            if (sum > 9){
+                sum -= 10;
+                rest = 1;
+            }
 
-            l1 = (l1 != null) ? l1.next : null;
-            l2 = (l2 != null) ? l2.next : null;
+            if (l1 != null){
+                write.next = l1;
+            }
+            else {
+                write.next = r2;
+                r2 = r2.next;
+            }
+            write.next.val = sum;
+            write = write.next;
+
+            if (l1 != null){l1 = l1.next;}
+            if (l2 != null){l2 = l2.next;}
         }
+        write.next = null;
+        return res.next;
+    }
 
-        ListNode result = dummyHead.next;
-        dummyHead.next = null;
-        return result;
-
+    public static void printListNode(ListNode head){
+        for (;head != null; head = head.next){
+            System.out.print(head.val+"-> ");
+        }
+        System.out.println();
     }
 
 }
