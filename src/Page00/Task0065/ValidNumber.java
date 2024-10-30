@@ -7,30 +7,30 @@ public class ValidNumber {
 
     }
     public boolean isNumber(String s) {
-        boolean e = false;
-        boolean dot = false;
-        boolean n = false;
+        boolean e = false;//was the previous char 'e' or 'E'
+        boolean n = false;//is number
+        boolean d = false;//was the previous char '.'
 
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++){
             switch (s.charAt(i)){
-                case '1','2','3','4','5','6','7','8','9','0' -> n = true;
+                case '0','1','2','3','4','5','6','7','8','9' -> n = true;
+                case '.' ->{
+                    if (d || e) {return false;}
+                    d = true;
+                }
                 case 'e','E' -> {
-                    if (e || !n) {return false;}
+                    if (e || !n){return false;}
                     e = true;
                     n = false;
                 }
-                case '.' -> {
-                    if (dot || e) {return false;}
-                    dot = true;
+                case '+','-' -> {
+                    if (i != 0 && s.charAt(i-1) != 'e' && s.charAt(i-1) != 'E') {return false;}
+                    n = false;
                 }
-                case '+', '-' -> {
-                    if (i!=0 && s.charAt(i-1)!='e' && s.charAt(i-1)!='E') {return false;}// e - это как начало числа
-                }
-                default -> {
-                    return false;
-                }
+                default -> {return false;}
             }
         }
+
         return n;
     }
 }
