@@ -1,19 +1,25 @@
 package Page27.Task2744;
 
+import java.util.BitSet;
+
 public class FindMaximumNumberOfStringPairs {
     public static void main(String[] args) {
-
+        System.out.println(new FindMaximumNumberOfStringPairs().maximumNumberOfStringPairs(new String[]{"xi","nw","qp","to","oo","xp","ix","wn","pq"}));
     }
     public int maximumNumberOfStringPairs(String[] words) {
-        int l = words.length;
+        BitSet set = new BitSet(676);
         int repeats = 0;
 
-        for(int i = 0; i < l; i++){
-            for(int j = i + 1; j < l; j++) {
-                if (words[i].charAt(0) == words[j].charAt(1) && words[i].charAt(1) == words[j].charAt(0)) {
-                    repeats++;
-                }
+        for (String word : words){
+            int index      = (word.charAt(0)-'a'+1) + (word.charAt(1)-'a'+1)*26;
+            int otherIndex = (word.charAt(1)-'a'+1) + (word.charAt(0)-'a'+1)*26;
+
+            if (set.get(index) && set.get(otherIndex)){
+                repeats++;
+                continue;
             }
+            set.set(index);
+            set.set(otherIndex);
         }
 
         return repeats;
