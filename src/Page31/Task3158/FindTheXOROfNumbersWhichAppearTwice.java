@@ -2,6 +2,7 @@ package Page31.Task3158;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 public class FindTheXOROfNumbersWhichAppearTwice {
@@ -9,17 +10,15 @@ public class FindTheXOROfNumbersWhichAppearTwice {
 
     }
     public int duplicateNumbersXOR(int[] nums) {
-        byte[] numCounts = new byte[50];
-
-        for (int i = 0; i < nums.length; i++){
-            numCounts[nums[i]-1]++;
-        }
-
+        BitSet set = new BitSet();
         int res = 0;
-        for (int i = 0; i < numCounts.length; i++){
-            if (numCounts[i] == 2){
-                res ^= (i+1);
+
+        for (int i : nums){
+            if (set.get(i)){
+                res ^= i;
+                continue;
             }
+            set.set(i);
         }
 
         return res;
