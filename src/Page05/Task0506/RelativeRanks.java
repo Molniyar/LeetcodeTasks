@@ -19,7 +19,7 @@ public class RelativeRanks {
         String[] sortedArray = new String[score.length];
 
         for (int i = 0; i < score.length-3; i++) {
-            sortedArray[indexes[i]] = score.length-i+"";
+            sortedArray[indexes[i]] = Integer.toString(score.length-i);
         }
         if (score.length > 0){sortedArray[indexes[score.length - 1]] = "Gold Medal";}
         if (score.length > 1){sortedArray[indexes[score.length - 2]] = "Silver Medal";}
