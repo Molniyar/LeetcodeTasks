@@ -5,9 +5,12 @@ public class CategorizeBoxAccordingToCriteria {
         System.out.println(new CategorizeBoxAccordingToCriteria().categorizeBox(2227,937,2241,983));
     }
     public String categorizeBox(int length, int width, int height, int mass) {
-        long volume = (long) length *width*height;
+        long volume = (long) length * width * height;
 
-        boolean isBulky = (length >= 10000 || width >= 10000 || height >= 10000) || (volume >= 1000000000);
+
+        boolean isBulky = (length >= 10000 || width >= 10000 || height >= 10000);
+        if (!isBulky) {isBulky = volume >= 1000000000;}
+
         boolean isHeavy = mass >= 100;
 
         if (isBulky){
