@@ -9,26 +9,26 @@ public class FindCommonElementsBetweenTwoArrays {
 
     }
     public int[] findIntersectionValues(int[] nums1, int[] nums2) {
-        Set<Integer> set1 = new HashSet<>();
-        Set<Integer> set2 = new HashSet<>();
+        BitSet set1 = new BitSet();
+        BitSet set2 = new BitSet();
 
         for (int j : nums1) {
-            set1.add(j);
+            set1.set(j,true);
         }
 
         for (int j : nums2) {
-            set2.add(j);
+            set2.set(j,true);
         }
 
         int count1 = 0;
         int count2 = 0;
         for (int j : nums1) {
-            if (set2.contains(j)) {
+            if (set2.get(j)) {
                 count1++;
             }
         }
         for (int j : nums2) {
-            if (set1.contains(j)) {
+            if (set1.get(j)) {
                 count2++;
             }
         }
