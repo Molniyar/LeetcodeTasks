@@ -24,12 +24,15 @@ public class LongestCommonPrefix {
 
         int max = end;
 
+
         for (int i = 0; i < strs.length; i++){
             String keepString = strs[i];
             int keepLength = keepString.length();
 
             int count = 0;
-            for (int j = 0; j < Math.min(keepLength, l); j++){
+
+            int min = Math.min(keepLength, l);
+            for (int j = 0; j < min; j++){
                 if (keepString.charAt(j) == strs[0].charAt(j)){
                     count++;
                 }
