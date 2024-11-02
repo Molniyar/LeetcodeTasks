@@ -23,7 +23,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 i -= count;
                 count = 0;
 
-                set = new BitSet();
+                set.clear();
 
                 continue;
             }
