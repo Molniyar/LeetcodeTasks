@@ -10,7 +10,7 @@ public class IntersectionOfTwoArrays {
 
     }
     public int[] intersection(int[] nums1, int[] nums2) {
-        HashSet<Integer> r = new HashSet<>();
+        BitSet r = new BitSet();
 
         BitSet set = new BitSet();
         for (int i = 0; i < nums1.length; i++){
@@ -19,18 +19,10 @@ public class IntersectionOfTwoArrays {
 
         for (int i = 0; i < nums2.length; i++){
             if (set.get(nums2[i])){
-                r.add(nums2[i]);
+                r.set(nums2[i]);
             }
         }
 
-        int[] result = new int[r.size()];
-
-        int i = 0;
-        for (int num : r){
-            result[i] = num;
-            i++;
-        }
-
-        return result;
+        return r.stream().toArray();
     }
 }
