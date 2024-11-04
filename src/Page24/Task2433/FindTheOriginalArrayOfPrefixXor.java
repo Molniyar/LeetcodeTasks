@@ -1,21 +1,18 @@
 package Page24.Task2433;
 
+import java.util.Arrays;
+
 public class FindTheOriginalArrayOfPrefixXor {
     public static void main(String[] args) {
-
+        System.out.println(Arrays.toString(new FindTheOriginalArrayOfPrefixXor().findArray(new int[]{5, 2, 0, 3, 1})));//5,7,2,3,2
     }
     public int[] findArray(int[] pref) {
-        if (pref.length < 2){
-            return pref;
-        }
+        int keep = 0;
 
-        int keep = pref[0];
-        for (int i = 1; i < pref.length; i++){
-            int k = pref[i-1] ^ pref[i];
-            pref[i-1] = keep;
-            keep = k;
+        for (int i = 0; i < pref.length; i++){
+            pref[i] ^= keep;
+            keep = pref[i] ^ keep;
         }
-        pref[pref.length-1] = keep;
 
         return pref;
     }
