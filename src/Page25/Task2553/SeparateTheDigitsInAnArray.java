@@ -12,28 +12,24 @@ public class SeparateTheDigitsInAnArray {
     public int[] separateDigits(int[] nums) {
         int length = 0;
 
-        byte[] lengths = new byte[nums.length];
         for (int i = 0; i < nums.length; i++){
-            int l = 0;
             for (int j = nums[i]; j != 0; j /= 10){
                 length++;
-                l++;
             }
-            lengths[i] = (byte) l;
         }
 
         int[] result = new int[length];
 
         for (int i = 0, i2 = 0; i < nums.length; i++){
-            int k  = i2;
-            int K = i2+lengths[i]-1;
-
             int l = 0;
+            for (int j = nums[i]; j != 0; j /= 10){l++;}
+
+            int K = i2+l-1;
 
             for (int j = nums[i]; j != 0; j /= 10,K--){
                 result[K] = (j % 10);
             }
-            i2+=lengths[i];
+            i2+=l;
         }
 
         return result;
